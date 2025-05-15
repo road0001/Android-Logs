@@ -1,0 +1,25 @@
+<head>
+	<meta http-equiv="Content-Language" content="zh-cn">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+	<title>Android Logs</title>
+	<script src="scripts/jquery-3.0.0.min.js"></script>
+	<script src="scripts/jquery.plugin.highlight.js"></script>
+	<script src="scripts/jquery.extensions.dom.min.js"></script>
+	<script src="scripts/script.main.js"></script>
+	<script src="scripts/script.logcat.js"></script>
+	<script src="scripts/script.utils.js"></script>
+	<link rel="stylesheet" href="styles/style.main.css">
+	<link href="images/favicon.png" rel="shortcut icon" type="image/x-icon">
+</head>
+<body>
+	<div id="tabBar" class="tabBar keybind"><button class="tabBu">Tab 1</button></div>
+	<div id="filterBar" class="filterBar toolBar keybind">
+		<input id="fliterInput" class="filterInput toolInput" placeholder="Filter logs"><button id="filterBu" class="toolBu filterBu filter">▶</button><button id="filterClearBu" class="toolBu filterBu clear">×</button>
+	</div>
+	<div id="searchBar" class="searchBar toolBar keybind">
+		<input id="searchInput" class="searchInput toolInput" placeholder="Search logs"><button id="searchCount" class="toolBu searchBu count">&nbsp;</button><button id="searchBu" class="toolBu searchBu search">▶</button><button id="searchPrevBu" class="toolBu searchBu prev">∧</button><button id="searchNextBu" class="toolBu searchBu next">∨</button><button id="searchClearBu" class="toolBu searchBu clear">×</button>
+	</div>
+	<div id="toolBar" class="toolBar keybind"></div>
+	<div id="logZone" class="logZone keybind"></div>
+	<div id="statusBar" class="toolBar statusBar keybind"></div>
+</body>

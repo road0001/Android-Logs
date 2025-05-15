@@ -1,0 +1,23 @@
+{
+	"name": "Android Logs",
+	"main": "App/index.html",
+	"chromium-args": "--disable-web-security --allow-file-access-from-files  --allow-running-insecure-content",
+	"nodejs": true,
+	"window": {
+		"title": "Android Logs",
+		"toolbar": false,
+		"frame": true,
+		"fullscreen": false,
+		"icon": "App/images/favicon.png",
+		"width": 1280,
+		"height": 720,
+		"min_width": 1280,
+		"min_height": 720,
+		"position": "center"
+	},
+	"webkit": {
+		"plugin": true
+	},
+	"dependencies": {
+	}
+}

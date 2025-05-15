@@ -1,0 +1,259 @@
+@font-face{
+	font-family: DOSVGA437;
+	font-display:swap;
+	src: url('fonts/Perfect DOS VGA 437.woff.edit.ttf'),
+	url('fonts/Perfect DOS VGA 437.woff.edit.ttf');
+	unicode-range:U+00-52F, U+1E00-1FFF, U+2200-22FF;
+}
+@font-face{
+	font-family: DOSVGA437Moder;
+	font-display:swap;
+	src: url('fonts/Moder DOS 437 Win.ttf'),
+	url('fonts/Moder DOS 437 Win.ttf');
+}
+@font-face{
+	font-family: VonwaonBitmap16;
+	font-display:swap;
+	src: url('fonts/VonwaonBitmap-16px.ttf'),
+	url('fonts/VonwaonBitmap-16px.ttf');
+}
+
+body{
+	margin:0px;
+	padding:0px;
+	background:#333;
+}
+
+*{
+	font-family: 'VonwaonBitmap16','宋体','微软雅黑';
+	font-size:16px;
+	line-height: 16px;
+}
+
+button{
+	border:none;
+	outline:none;
+	border-radius:5px;
+	background:#666;
+	color:#FFF;
+	padding:0px;
+	vertical-align: top;
+	font-size:16px;
+	transition:all ease 0.25s;
+}
+button:hover, button.selected{
+	background:#999;
+}
+button:active{
+	background:#777;
+}
+button:disabled{
+	background:#555;
+	color:#999;
+}
+
+input{
+	border:none;
+	outline:none;
+	vertical-align: top;
+	padding-left:8px;
+	padding-right:8px;
+	background:transparent;
+	color:#FFF;
+	border:1px solid #666;
+	border-radius:5px;
+	font-size:16px;
+	transition:all ease 0.25s;
+}
+input:hover, input:focus{
+	border-color:#999;
+	background:#444;
+}
+input:active{
+	border-color:#777;
+}
+
+
+.toolBar, .tabBar{
+	position:fixed;
+	left:0px;
+	right:0px;
+	height:32px;
+	line-height:32px;
+	overflow: hidden;
+	white-space: nowrap;
+	color:#FFF;
+	z-index:100;
+}
+
+.tabBar{
+	overflow-x:overlay;
+	padding-right:2px;
+}
+.tabBar::-webkit-scrollbar {
+	background-color: transparent;
+	width:10px;
+	height:2px;
+}
+.tabBar::-webkit-scrollbar-button {
+	display: none;
+}
+.tabBar::-webkit-scrollbar-thumb {
+	background-color: #999;
+	border-radius:5px;
+	transition:all 0.25s ease;
+	/* border:1px solid rgba(0,0,0,0.15); */
+	/* box-shadow: 0px 0px 10px rgba(0,0,0,0.5); */
+}
+
+::-webkit-scrollbar {
+	background-color: rgba(0,0,0,0);
+	width:10px;
+}
+::-webkit-scrollbar-button {
+	display: none;
+}
+::-webkit-scrollbar-thumb {
+	background-color: #666;
+	border-radius:10px;
+	transition:all 0.25s ease;
+	/* border:1px solid rgba(0,0,0,0.15); */
+	/* box-shadow: 0px 0px 10px rgba(0,0,0,0.5); */
+}
+::-webkit-scrollbar-thumb:hover {
+	background-color: #999;
+	/* border:1px solid rgba(0,0,0,0.25); */
+}
+::-webkit-scrollbar-thumb:active {
+	background-color: #777;
+}
+
+::-webkit-scrollbar-corner{
+	display:none;
+}
+
+.tabBar{
+	top:0px !important;
+}
+.filterBar{
+	top:32px !important;
+}
+.searchBar{
+	top:64px !important;
+}
+.toolBar{
+	top:96px;
+}
+.statusBar{
+	top:auto !important;
+	bottom:0px !important;
+	padding-left:8px;
+	padding-right:8px;
+}
+
+.tabBu{
+	max-width:128px;
+	min-width:128px;
+	height:28px;
+	margin:2px;
+	margin-right:0px;
+}
+
+.toolInput{
+	width:100%;
+	height:28px;
+	margin:2px;
+}
+
+.filterInput{
+	width:calc(100% - 32px * 2 - 4px);
+}
+.searchInput{
+	width:calc(100% - 32px * 4 - 4px);
+	padding-right:96px;
+}
+
+.toolBu{
+	width:28px;
+	height:28px;
+	margin:2px;
+	font-family: 宋体;
+	font-size:18px;
+}
+.toolBu.clear{
+	/* font-size:24px; */
+}
+.toolBu.filter, .toolBu.search, .toolBu.run{
+	font-size:14px;
+}
+
+.toolBu.searchBu.count, .toolBu.searchBu.count:hover, .toolBu.searchBu.count:active{
+	width:96px;
+	margin-left:-98px;
+	background:transparent;
+	text-align:right;
+	padding-right:10px;
+	font-family: 'VonwaonBitmap16','宋体','微软雅黑';
+	font-size:16px;
+}
+
+.toolBu.sperate, .toolBu.sperate:hover, .toolBu.sperate:active{
+	width:1px;
+	background:#666;
+}
+
+.logZone{
+	position:fixed;
+	top:128px;
+	left:0px;
+	right:0px;
+	bottom:32px;
+	padding:8px;
+	background:#000;
+	color:#CCC;
+	overflow-x:hidden;
+	overflow-y:auto;
+	line-height:18px;
+	word-break: break-all;
+	/* overflow-wrap: break-word; */
+	border-radius:5px;
+	border:2px solid #333;
+}
+
+.logZone p{
+	margin:0px;
+	margin-bottom:16px;
+	padding:0px;
+}
+
+.hidden{
+	display:none;
+}
+
+.highlight{
+	transition:all 0.25s;
+	outline:1px solid transparent;
+	color:#000 !important;
+	background-color: #FFFF00 !important;
+}
+.highlight2{
+	color:#000 !important;
+	background-color: #FFFF00 !important;
+	outline:2px solid #FF7F00 !important;
+}
+
+.log{
+
+}
+.log.warn, .log.warn span{
+	background-color:#FF0 !important;
+	color:#000 !important;
+}
+.log.error, .log.error span{
+	background-color:#F00 !important;
+	color:#000 !important;
+}
+.log.info, .log.info span{
+	background-color:#0FF !important;
+	color:#000 !important;
+}
