@@ -44,11 +44,16 @@ function stopLogcat(){
 	return logcatStatus;
 }
 
+let index=0;
+let filterIndex=0;
+let clipCount=0;
+let maxLogCount=5000;
 function outputLogs(log,type=`log`,force){
 	let filter=$(`#fliterInput`).val();
 	let display=true;
 	if (!force && filter && !log.includes(filter)){
 		display=false;
+		return; // 对于未filter的log，默认是不输出，这样可以避免其他log太多被删除
 	}
 
 	let colorList=[
@@ -72,11 +77,36 @@ function outputLogs(log,type=`log`,force){
 		}
 	}
 
-	$(`#logZone`).appendDOM({tag:`p`,class:`log ${type} ${display==false?`hidden`:``}`,html:sp.join(`&nbsp;`)});
+	$(`#logZone`).appendDOM({tag:`p`,id:`log_${index}`,class:`logs ${type} ${display==false?`hidden`:``}`,html:sp.join(`&nbsp;`)});
 	// applyLogFilter();
 	if(scrollLogs){
 		$(`#logZone`)[0].scrollTop+=999999;
 	}
+	index++;
+	if(filter){
+		filterIndex=$(`.logs:not(.hidden)`).length;
+	}
+	if(index > maxLogCount){
+		$(`#logZone`).children().eq(0).remove();
+		clipCount++;
+	}
+	updateStatus();
+}
+
+function updateStatus(){
+	let filter=$(`#fliterInput`).val();
+	let clipText=``;
+	let filterText=`.`;
+
+	let totalText=`Total ${index} logs`;
+	if(clipCount>0){
+		clipText=`, cliped ${clipCount} logs`;
+	}
+	if(filter!=``){
+		totalText=``;
+		filterText=`Filtered ${filterIndex} logs.`;
+	}
+	$(`#statusBar`).html(`${totalText}${clipText}${filterText}`);
 }
 
 function applyLogFilter(){
@@ -101,9 +131,11 @@ function toggleLogcat(){
 
 function applyLogcatStatus(){
 	if(logcatStatus==false){
+		$(`.toolBu.run`).removeClass(`stop`);
 		$(`.toolBu.run`).attr(`title`,`Run logcat [F5]`);
 		$(`.toolBu.run`).html(`▶`);
 	}else{
+		$(`.toolBu.run`).addClass(`stop`);
 		$(`.toolBu.run`).attr(`title`,`Stop logcat [F5]`);
 		$(`.toolBu.run`).html(`■`);
 	}
@@ -125,4 +157,8 @@ function toggleScrollLogs(bool){
 
 function clearLogs(){
 	$(`#logZone`).html(``);
+	index=0;
+	filterIndex=0;
+	clipCount=0;
+	updateStatus();
 }

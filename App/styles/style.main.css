@@ -187,6 +187,13 @@ input:active{
 	font-size:14px;
 }
 
+.toolBu.run{
+	color:#0F0;
+}
+.toolBu.run.stop{
+	color:#F00;
+}
+
 .toolBu.searchBu.count, .toolBu.searchBu.count:hover, .toolBu.searchBu.count:active{
 	width:96px;
 	margin-left:-98px;
