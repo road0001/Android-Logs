@@ -86,7 +86,7 @@ function outputLogs(log,type=`log`,force){
 	if(filter){
 		filterIndex=$(`.logs:not(.hidden)`).length;
 	}
-	if(index > maxLogCount){
+	if(index >= maxLogCount){
 		$(`#logZone`).children().eq(0).remove();
 		clipCount++;
 	}
@@ -103,8 +103,8 @@ function updateStatus(){
 		clipText=`, cliped ${clipCount} logs`;
 	}
 	if(filter!=``){
-		totalText=``;
-		filterText=`Filtered ${filterIndex} logs.`;
+		totalText=`Filtered ${filterIndex} logs`;
+		filterText=``;
 	}
 	$(`#statusBar`).html(`${totalText}${clipText}${filterText}`);
 }
@@ -121,7 +121,8 @@ function applyLogFilter(){
 	}
 }
 
-function toggleLogcat(){
+function toggleLogcat(bool){
+	if(bool!=undefined) logcatStatus=bool;
 	if(logcatStatus==false){
 		runLogcat();
 	}else{

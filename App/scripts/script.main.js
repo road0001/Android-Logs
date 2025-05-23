@@ -76,7 +76,7 @@ window.onload=async function(){
 	});
 
 	document.addEventListener(`keyup`,function(e){
-		console.log(e.key);
+		console.log(e);
 		const tag = e.target.tagName.toLowerCase();
 		if (tag === 'input' || tag === 'textarea') return;
 
@@ -87,13 +87,13 @@ window.onload=async function(){
 			$(`.toolBu.run`).click();
 		}
 		
-		if (e.key.toLowerCase() === `s`) {
+		if (e.key.toLowerCase() === `s` && !e.ctrlKey) {
 			$(`.toolBu.scroll`).click();
 		}
-		if (e.key.toLowerCase() === `d`) {
+		if (e.key.toLowerCase() === `d` && !e.ctrlKey) {
 			$(`.toolBu.bottom`).click();
 		}
-		if (e.key.toLowerCase() === `c`) {
+		if (e.key.toLowerCase() === `c` && !e.ctrlKey) {
 			$(`#toolBar .toolBu.clear`).click();
 		}
 	})
