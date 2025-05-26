@@ -31,7 +31,7 @@ window.onload=async function(){
 	]);
 	
 	toggleScrollLogs(true);
-	toggleLogcat();
+	setTimeout(()=>{toggleLogcat()},500);
 
 	$(`#searchInput`).bind(`keypress`,function(e){
 		if(e.which==13){
