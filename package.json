@@ -1,7 +1,7 @@
 {
 	"name": "Android Logs",
 	"main": "App/index.html",
-	"chromium-args": "--disable-web-security --allow-file-access-from-files  --allow-running-insecure-content",
+	"chromium-args": "--disable-web-security --allow-file-access-from-files  --allow-running-insecure-content --disable-background-timer-throttling --disable-renderer-backgrounding --disable-backgrounding-occluded-windows",
 	"nodejs": true,
 	"window": {
 		"title": "Android Logs",
@@ -14,6 +14,9 @@
 		"min_width": 1280,
 		"min_height": 720,
 		"position": "center"
+	},
+	"webPreferences": {
+		"backgroundThrottling": false
 	},
 	"webkit": {
 		"plugin": true

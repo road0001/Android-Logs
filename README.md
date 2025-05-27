@@ -4,6 +4,9 @@ A client to display and parse Android logs.
 #### Feature requires
 
 #### Updates
+1.0.4 20250527
+  - Fixe A bug that window maybe freeze when switched to background.
+
 1.0.3 20250526
   - Fixed A bug that maybe stucked when init.
 
