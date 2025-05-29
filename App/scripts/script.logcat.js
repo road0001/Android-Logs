@@ -47,7 +47,7 @@ function stopLogcat(){
 let index=0;
 let filterIndex=0;
 let clipCount=0;
-let maxLogCount=5000;
+let maxLogCount=2000;
 function outputLogs(log,type=`log`,force){
 	let filter=$(`#fliterInput`).val();
 	let display=true;

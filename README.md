@@ -4,6 +4,9 @@ A client to display and parse Android logs.
 #### Feature requires
 
 #### Updates
+1.0.5 20250529
+  - Changed Logs auto clip count from 5000 to 2000.
+
 1.0.4 20250527
   - Fixe A bug that window maybe freeze when switched to background.
 
