@@ -1,4 +1,5 @@
 window.onload=async function(){
+	loadStorage();
 	await mkdirs(`Logs`);
 	$(`#toolBar`).appendDOM([
 		{tag:`button`,class:`toolBu ontop`,title:`Keep on top [F4]`,html:`☸`,bind:{
@@ -31,7 +32,8 @@ window.onload=async function(){
 	]);
 	
 	toggleScrollLogs(true);
-	setTimeout(()=>{toggleLogcat()},500);
+	toggleLogcat();
+	// setTimeout(()=>{toggleLogcat()},500);
 
 	$(`#searchInput`).bind(`keypress`,function(e){
 		if(e.which==13){
@@ -52,10 +54,13 @@ window.onload=async function(){
 		searchRecords(`clear`,$(`#searchInput`).val());
 	});
 
+	$(`#fliterInput`).val(localData.filter || ``);
 	$(`#fliterInput`).bind(`keypress`,function(e){
 		if(e.which==13){
 			applyLogFilter();
 		}
+		localData.filter=$(this).val();
+		saveStorage();
 	});
 	$(`#filterBu`).bind(`click`,function(){
 		applyLogFilter();
@@ -63,6 +68,8 @@ window.onload=async function(){
 	$(`#filterClearBu`).bind(`click`,function(){
 		$(`#fliterInput`).val(``);
 		applyLogFilter();
+		localData.filter=$(`#fliterInput`).val();
+			saveStorage();
 	});
 
 	$(`#logZone`).bind(`scroll`,function(){

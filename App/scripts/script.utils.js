@@ -1,6 +1,8 @@
 const fs=require(`fs`);
+const win = nw.Window.get();
 
 const defaultLocalData={
+	filter:``,
 };
 let localData={};
 function loadStorage(){
@@ -436,4 +438,37 @@ function searchRecords(type, text){
 			}
 		break;
 	}
+}
+
+let toastTimeout;
+function toast(msg, type=`normal`,time=3){
+	if(msg==false){
+		$(`.toast`).stop().animate({opacity:0},250,()=>{
+			$(`.toast`).remove();
+		});
+		return;
+	}
+	$(`.toast`).remove();
+	$(`body`).appendDOM({
+		tag:`div`,class:`toast ${type}`,style:{opacity:0},html:msg
+	});
+	$(`.toast`).stop().animate({opacity:1},250);
+	clearTimeout(toastTimeout);
+	toastTimeout=setTimeout(()=>{
+		toast(false);
+	},time*1000);
+}
+
+async function copyText(text){
+	return new Promise((resolve, reject)=>{
+		const blob = new Blob([text], { type: `text/plain` });
+		const clipboardItem = new ClipboardItem({ 'text/plain': blob });
+		navigator.clipboard.write([clipboardItem])
+		.then(() => {
+			resolve();
+		})
+		.catch(err => {
+			reject(err);
+		});
+	})
 }

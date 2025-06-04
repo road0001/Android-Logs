@@ -89,6 +89,7 @@ input:active{
 .tabBar{
 	overflow-x:overlay;
 	padding-right:2px;
+	display:none;
 }
 .tabBar::-webkit-scrollbar {
 	background-color: transparent;
@@ -136,13 +137,16 @@ input:active{
 	top:0px !important;
 }
 .filterBar{
-	top:32px !important;
+	/* top:32px !important; */
+	top:0px !important;
 }
 .searchBar{
-	top:64px !important;
+	/* top:64px !important; */
+	top:32px !important;
 }
 .toolBar{
-	top:96px;
+	/* top:96px; */
+	top:64px;
 }
 .statusBar{
 	top:auto !important;
@@ -211,11 +215,12 @@ input:active{
 
 .logZone{
 	position:fixed;
-	top:128px;
+	/* top:128px; */
+	top:96px;
 	left:0px;
 	right:0px;
 	bottom:32px;
-	padding:8px;
+	/* padding:8px; */
 	background:#000;
 	color:#CCC;
 	overflow-x:hidden;
@@ -227,10 +232,65 @@ input:active{
 	border:2px solid #333;
 }
 
+.logZone::before{
+	content:'';
+	position:fixed;
+	top:98px;
+	left:2px;
+	width:64px;
+	bottom:34px;
+	background:#111;
+	z-index:-1;
+	border-radius:5px;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+.logTable{
+	margin:0px;
+	padding:0px;
+	width:100%;
+	border-collapse: collapse;
+	color:#CCC;
+	vertical-align: top;
+}
+.logTable tr, .logTable td{
+	vertical-align: top;
+}
+.logTable .logTd.count{
+	width:64px;
+}
+.logTable .logTd.log{
+	width:auto;
+	padding-left:4px;
+}
+
 .logZone p{
 	margin:0px;
 	margin-bottom:16px;
 	padding:0px;
+}
+
+.logZone .logBu{
+	/* width:48px; */
+	width:100%;
+	height:100%;
+	min-height:32px;
+	text-align:right;
+	vertical-align: top;
+	padding-left:8px;
+	padding-right:8px;
+	background:transparent;
+	display: flex;
+    align-items: flex-start;
+    justify-content: right;
+	cursor: pointer;
+}
+.logZone .logBu:hover{
+	background:#999;
+}
+.logZone .logBu:active{
+	background:#777;
 }
 
 .hidden{
@@ -263,4 +323,33 @@ input:active{
 .log.info, .log.info span{
 	background-color:#0FF !important;
 	color:#000 !important;
+}
+
+.toast{
+	position:fixed;
+	left:30%;
+	right:30%;
+	bottom:15%;
+	z-index:100010;
+	text-align:center;
+	padding:8px;
+	font-size:20px;
+	background-color: #333;
+    color: #ffffff;
+	border-radius: 5px;
+	pointer-events: none;
+}
+.toast.normal{
+}
+.toast.info{
+	background:#399;
+}
+.toast.success{
+	background:#393;
+}
+.toast.warning{
+	background:#993;
+}
+.toast.error{
+	background:#933;
 }

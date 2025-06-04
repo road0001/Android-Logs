@@ -1,10 +1,8 @@
 const cp = require(`child_process`);
 const readline = require(`readline`);
-const win = nw.Window.get();
 
 let logcat=null, logcatLine=null, logcatStatus=false;
 function runLogcat(){
-	cp.execSync(`title ADB Logcat`);
 	cp.spawn(`adb.exe`, [`logcat`,`-c`]); //清空之前的日志，只输出最新的
 	logcat = cp.spawn(`adb.exe`, [`logcat`]);
 
@@ -77,7 +75,15 @@ function outputLogs(log,type=`log`,force){
 		}
 	}
 
-	$(`#logZone`).appendDOM({tag:`p`,id:`log_${index}`,class:`logs ${type} ${display==false?`hidden`:``}`,html:sp.join(`&nbsp;`)});
+	$(`#logTable`).appendDOM({
+		tag:`tr`,id:`logTr_${index}`,class:`logsTr ${type} ${display==false?`hidden`:``}`,
+		children:[
+			{tag:`td`,class:`logTd count`,children:{tag:`button`,class:`logBu`,html:filterIndex+1,bind:{click(){
+				copyLogs($(this).parent().next().text(), $(this).text());
+			}}}},
+			{tag:`td`,class:`logTd log`,children:{tag:`p`,class:`logsTr logs ${type}`,html:sp.join(`&nbsp;`)}},
+		]
+	});
 	// applyLogFilter();
 	if(scrollLogs){
 		$(`#logZone`)[0].scrollTop+=999999;
@@ -85,12 +91,25 @@ function outputLogs(log,type=`log`,force){
 	index++;
 	if(filter){
 		filterIndex=$(`.logs:not(.hidden)`).length;
+	}else{
+		filterIndex=index;
 	}
 	if(index >= maxLogCount){
-		$(`#logZone`).children().eq(0).remove();
+		$(`#logTable`).children().eq(0).remove();
 		clipCount++;
 	}
 	updateStatus();
+}
+
+function copyLogs(logs,index){
+	copyText(logs)
+	.then(() => {
+		toast(`Log ${index} copy success!`,`success`);
+	})
+	.catch(err => {
+		toast(`Log ${index} copy error!`,`error`);
+		console.error(err);
+	});
 }
 
 function updateStatus(){
@@ -157,7 +176,7 @@ function toggleScrollLogs(bool){
 }
 
 function clearLogs(){
-	$(`#logZone`).html(``);
+	$(`#logTable`).html(``);
 	index=0;
 	filterIndex=0;
 	clipCount=0;

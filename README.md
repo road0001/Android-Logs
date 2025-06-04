@@ -4,6 +4,12 @@ A client to display and parse Android logs.
 #### Feature requires
 
 #### Updates
+1.0.6 20250603
+  - Added Toast feature.
+  - Added Filter remember feature.
+  - Optimized Logcat running methods.
+  - Removed Tabbar.
+
 1.0.5 20250529
   - Changed Logs auto clip count from 5000 to 2000.
 
