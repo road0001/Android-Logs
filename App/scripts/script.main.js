@@ -32,7 +32,7 @@ window.onload=async function(){
 	]);
 	
 	toggleScrollLogs(true);
-	toggleLogcat();
+	// toggleLogcat();
 	// setTimeout(()=>{toggleLogcat()},500);
 
 	$(`#searchInput`).bind(`keypress`,function(e){
@@ -55,6 +55,7 @@ window.onload=async function(){
 	});
 
 	$(`#fliterInput`).val(localData.filter || ``);
+	filterText=$(`#fliterInput`).val();
 	$(`#fliterInput`).bind(`keypress`,function(e){
 		if(e.which==13){
 			applyLogFilter();

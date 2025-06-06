@@ -4,6 +4,12 @@ A client to display and parse Android logs.
 #### Feature requires
 
 #### Updates
+1.0.8 20250606
+  - Optimized Performance when log is too much.
+
+1.0.7 20250604
+  - Fixed A bug that index of logs maybe wrong when logs was clipped.
+
 1.0.6 20250603
   - Added Toast feature.
   - Added Filter remember feature.
