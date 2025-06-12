@@ -32,7 +32,7 @@ window.onload=async function(){
 	]);
 	
 	toggleScrollLogs(true);
-	// toggleLogcat();
+	toggleLogcat();
 	// setTimeout(()=>{toggleLogcat()},500);
 
 	$(`#searchInput`).bind(`keypress`,function(e){
